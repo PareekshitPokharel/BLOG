@@ -5,7 +5,6 @@ from . models import Post
 
 
 
-
 def home(request):
     context = {
         'title': 'Home',
