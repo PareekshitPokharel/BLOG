@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
+from .models import Profile
 
 class UserRegisterForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
@@ -42,5 +43,9 @@ class UserUpdateForm(forms.ModelForm):
                   'email']
 
 class ProfileUpdateForm(forms.ModelForm):
-    pass
+    
+    class Meta:
+        model = Profile
+        fields = ['image']
+
         
