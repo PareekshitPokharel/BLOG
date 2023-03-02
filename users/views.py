@@ -48,11 +48,14 @@ def profile(request):
 class PasswordReset(PasswordResetView):
     
     def post(self, request, *args, **kwargs):
-        if request.method == 'POST':
             form = self.get_form()
-            clean_data = form.cleaned_data.get('email')
-            # print(clean_data)
-            # if clean == self.request.user.email:
+            if form.is_valid():
+                clean_data = form.cleaned_data.get('email')
+                if clean_data == self.request.user.email:
+                    return self.form_valid(form)
+                else:
+                    messages.error(request,'Invalid email address')
+                    return self.form_invalid(form)
                 
 
 
