@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from . models import Post
 from django.contrib.messages.views import SuccessMessageMixin
@@ -13,7 +14,18 @@ class PostListView(LoginRequiredMixin, ListView):
     model = Post
     template_name = 'blog/home.html'
     context_object_name = 'posts'
-    ordering = ['-date_posted']    
+    ordering = ['-date_posted']  
+
+
+class UserPostListView(LoginRequiredMixin, ListView):
+    model = Post
+    template_name = 'blog/user_posts.html'
+    context_object_name = 'posts'
+    ordering = ['-date_posted']
+
+    def get_queryset(self):
+        user = get_object_or_404(User, username = self.kwargs['username'])
+        return Post.objects.filter(author = user).order_by('-date_posted')
 
 class PostDetailView(DetailView):
     model = Post

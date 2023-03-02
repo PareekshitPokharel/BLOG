@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import PasswordResetView
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext as _
 
 
 # Create your views here.
@@ -42,5 +45,20 @@ def profile(request):
     return render (request, 'users/profile.html',context)
 
 
+class PasswordReset(PasswordResetView):
+    
+    def post(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            form = self.get_form()
+            clean_data = form.cleaned_data.get('email')
+            # print(clean_data)
+            # if clean == self.request.user.email:
+                
 
+
+            
+
+
+   
+        
 
