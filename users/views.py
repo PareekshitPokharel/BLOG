@@ -3,7 +3,6 @@ from django.contrib import messages
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import PasswordResetView
-from django.core.exceptions import ValidationError
 from django.utils.translation import gettext as _
 
 
