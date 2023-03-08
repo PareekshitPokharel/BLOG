@@ -153,8 +153,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 EMAIL_HOST_USER = 'test.pokharel@gmail.com'
-
-EMAIL_HOST_PASSWORD = 'Test123!'
+EMAIL_HOST_PASSWORD = 'cqvmnqdtkmhtmxex'
 
 
 
